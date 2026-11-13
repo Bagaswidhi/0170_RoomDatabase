@@ -45,3 +45,11 @@ class EntryViewModel(
         }
     }
 }
+
+/**
+ * Mewakili Status UI untuk Siswa.
+ */
+data class UIStateSiswa(
+    val detailSiswa: DetailSiswa = DetailSiswa(),
+    val isEntryValid: Boolean = false
+)
