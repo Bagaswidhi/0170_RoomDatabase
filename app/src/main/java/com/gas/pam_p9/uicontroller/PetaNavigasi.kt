@@ -1,5 +1,6 @@
 package com.gas.pam_p9.uicontroller
 
+import android.R.attr.type
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -12,12 +13,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.gas.pam_p9.R
+import com.gas.pam_p9.view.DetailSiswaScreen
+import com.gas.pam_p9.view.EditSiswaScreen
 import com.gas.pam_p9.view.EntrySiswaScreen
 import com.gas.pam_p9.view.HomeScreen
+import com.gas.pam_p9.view.route.DestinasiDetailSiswa
+import com.gas.pam_p9.view.route.DestinasiDetailSiswa.itemIdArg
+import com.gas.pam_p9.view.route.DestinasiEditSiswa
 
 @Composable
 fun SiswaApp(navController: NavHostController = rememberNavController()){
@@ -63,12 +71,34 @@ fun HostNavigasi(
             HomeScreen(
                 navigateToItemEntry = {
                     navController.navigate(DestinasiEntry.route)
+                },
+                navigateToItemUpdate = { id ->
+                    navController.navigate("${DestinasiDetailSiswa.route}/$id")
                 }
             )
         }
 
         composable(DestinasiEntry.route) {
             EntrySiswaScreen(navigateBack = { navController.popBackStack() })
+        }
+        composable(
+            route = DestinasiDetailSiswa.routeWithArgs,
+            arguments = listOf(navArgument(itemIdArg) {
+                type = NavType.IntType
+            })
+        ) {
+            DetailSiswaScreen(
+                navigateToEditItem = { navController.navigate("${DestinasiEditSiswa.route}/$it")},
+                navigateBack = { navController.popBackStack() }
+            )
+        }
+        composable(route = DestinasiEditSiswa.routeWithArgs,
+            arguments = listOf(navArgument(DestinasiEditSiswa.itemIdArg){
+                type = NavType.IntType})){
+            EditSiswaScreen(
+                navigateBack = { navController.popBackStack() },
+                onNavigateUp = { navController.navigateUp() }
+            )
         }
     }
 }
