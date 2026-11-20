@@ -20,9 +20,9 @@ abstract class DatabaseSiswa : RoomDatabase() {
         private var Instance: DatabaseSiswa? = null
 
         fun getDatabase(context: Context): DatabaseSiswa {
-            return (Instance ?: synchronized(this) {
-                Room.databaseBuilder(
-                    context,
+            return Instance ?: synchronized(this) {
+                Instance ?: Room.databaseBuilder(
+                    context.applicationContext,
                     DatabaseSiswa::class.java,
                     "siswa_database"
                 )
@@ -30,7 +30,7 @@ abstract class DatabaseSiswa : RoomDatabase() {
                     .also {
                         Instance = it
                     }
-            })
+            }
         }
     }
 }

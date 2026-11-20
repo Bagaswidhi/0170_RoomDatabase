@@ -44,6 +44,7 @@ dependencies {
     implementation(libs.compose.icons)
     //Room
     implementation(libs.bundles.room)
+    ksp(libs.room.complier)
     //ViewModel
     implementation(libs.lifecycle.viewmodel.compose)
     implementation(libs.lifecycle.runtime.compose)
