@@ -1,4 +1,4 @@
-package com.gas.pam_p9.viewmodel
+package com.gas.pam_p9.viewmodel.provider
 
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
@@ -10,13 +10,14 @@ object PenyediaViewModel {
     val Factory = viewModelFactory {
 
         initializer {
-            HomeViewModel(
+            _root_ide_package_.com.gas.pam_p9.viewmodel.HomeViewModel(
                 aplikasiSiswa().container.repositoriSiswa
             )
         }
 
         initializer {
-            EntryViewModel( aplikasiSiswa().container.repositoriSiswa
+            _root_ide_package_.com.gas.pam_p9.viewmodel.EntryViewModel(
+                aplikasiSiswa().container.repositoriSiswa
             )
         }
     }
