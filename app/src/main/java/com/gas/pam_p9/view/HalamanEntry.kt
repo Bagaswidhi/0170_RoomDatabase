@@ -28,7 +28,7 @@ import com.gas.pam_p9.uicontroller.DestinasiEntry
 import com.gas.pam_p9.uicontroller.SiswaTopAppBar
 import com.gas.pam_p9.viewmodel.DetailSiswa
 import com.gas.pam_p9.viewmodel.EntryViewModel
-import com.gas.pam_p9.viewmodel.PenyediaViewModel
+import com.gas.pam_p9.viewmodel.provider.PenyediaViewModel
 import com.gas.pam_p9.viewmodel.UIStateSiswa
 import kotlinx.coroutines.launch
 
